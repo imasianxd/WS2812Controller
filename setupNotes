@@ -1,0 +1,10 @@
+install node.js: sudo apt-get install nodejs
+install npm: sudo apt-get install npm
+install pm2: npm install -g pm2@latest
+
+ensure ws2812b connection is made to pin 18, +5V and GND of pi
+change # of led in strip.js
+change to port number in app.js 
+
+cd into folder and run sudo npm rebuild
+crontab -e as su, enter @reboot pm2 /path/to/script/app.js

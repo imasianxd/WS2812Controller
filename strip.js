@@ -1,7 +1,7 @@
 /* 
 *   Put your number of LEDs here.
 */
-var NUM_LEDS = 100;
+var NUM_LEDS = 150;
 
 var ws281x = require('rpi-ws281x-native');
 var pixelData = new Uint32Array(NUM_LEDS);
@@ -15,7 +15,7 @@ function strip() {
     this.Mode = "";
     this.Lights = []; 
     this.Clear = function () {
-        // ws281x.reset();
+        ws281x.reset();
     };
 
     /*
@@ -30,7 +30,7 @@ function strip() {
     *   Assign the brightness of the whole strip.
     */
     this.SetBrightness = function (brightness) {
-        // ws281x.setBrightness(brightness);
+        ws281x.setBrightness(brightness);
     };
 
     /*
@@ -49,7 +49,7 @@ function strip() {
             if (i > NUM_LEDS) break;
             tmp[i] = this.Lights[i];
         }
-        // ws281x.render(tmp);
+        ws281x.render(tmp);
     };
 }
 

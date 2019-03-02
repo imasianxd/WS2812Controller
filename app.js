@@ -40,7 +40,7 @@
 	app.use(bodyParser.urlencoded({ extended: true }));
 
 	/* The port the server will listen on */
-	var HTTP_PORT = 8080;
+	var HTTP_PORT = 81;
 
 	/* Global reference to the LED strip */
 	var strip = require("./strip.js");

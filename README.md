@@ -22,12 +22,7 @@ You can use it for WS2812 (Neopixel) christmas lights, or other simple DIY appli
 
 # Important Reading 
 
-I found this NPM package : https://www.npmjs.com/package/rpi-ws281x-native
-Read this page. 
-
-It led me to follow the instructions here at Adafruit: https://learn.adafruit.com/neopixels-on-raspberry-pi. 
-
-Connect your raspi according to those instructions. I have been using my Pi's with a diode instead of the level converter, and they work well.
+NPM package : https://www.npmjs.com/package/rpi-ws281x-native
 
 # Hardware 
 
@@ -55,24 +50,8 @@ Tested working on:
 
 # Raspberry Pi Setup
 
-1) Install NodeJS.
-2) Copy this repo to some location on your pi.
-3) Modify NUM_LEDS in strip.js to match the number of LEDs you have connected.
+see setupNotes for setup
 
-    `var NUM_LEDS = <YOUR_LEDS_HERE>;`
+forked from: https://github.com/luxdvie/WS2812Controller
 
-4) Modify HTTP_PORT in app.js to match the port you want to use to access your Pi.
 
-    `var HTTP_PORT = <YOUR_PORT_HERE>;`
-
-5) Run app.js as root user or with sudo privileges.
-
-    `node /path/to/me/app.js`
-
-6) Access app.html to control the LED strip from the IP Address of your raspi.
-
-    `http://<YOUR_IP_ADDRESS_HERE>:<YOUR_PORT_HERE>/`
-
-# Questions? 
-
-Contact me @ austin@brogencreations.com
