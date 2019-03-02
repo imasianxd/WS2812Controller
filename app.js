@@ -50,6 +50,7 @@
 	var fade = require("./animations/fade.js");
 	var rainbow = require("./animations/rainbow.js");
 	var control = require("./animations/control.js");
+	var fixed = require("./animations/fixed.js");
 
 
 /*******************************
@@ -114,6 +115,9 @@
 			break;
 			case "control":
 				lib = control;
+			break;
+			case "fixed":
+				lib = fixed;
 			break;
 		}
 
