@@ -11,7 +11,7 @@
 	var FixedColor1;
 	var Brightness;
 
-	function fixer() {
+	function fixed() {
 		this.fixedLighting = function(args, strip){
 			console.log("Starting fixed Color");
 			FixedColor1 = parseInt("0x" + args.Color1);
@@ -20,7 +20,7 @@
 			// init the led
 		    strip.SetStripColor(FixedColor1);
 			strip.SetBrightness(Brightness);
-			strip.Mode = "fixed";
+			strip.Mode = name + "fixed";
 			
 			console.log("started fixed mode");
 		};
@@ -37,7 +37,7 @@
 		};
 	}
 
-module.exports = new fixer();
+module.exports = new fixed();
 
 
 
