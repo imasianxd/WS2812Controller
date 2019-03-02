@@ -1,5 +1,5 @@
 /*******************************
-	christmas animations
+	fixed color animations
 *******************************/
 	var common = require("./common.js");
 	var name = "fixed.js";
@@ -14,6 +14,8 @@
 	function fixed() {
 		this.fixedLighting = function(args, strip){
 			console.log("Starting fixed Color");
+			strip.Stop();
+			
 			FixedColor1 = parseInt("0x" + args.Color1);
 			Brightness = parseInt(args.Brightness);
 			
