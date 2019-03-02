@@ -163,7 +163,12 @@
       control
     *******************************/         
       function Stop() {
-        AnimationRequest("control", "Stop", null);
+        //AnimationRequest("control", "Stop", null);
+	   var args = {
+          Color1: "fffff",
+          Brightness: "255"
+        };
+        AnimationRequest("fixed", "fixedLighting", args);
       }
 
     /*******************************
