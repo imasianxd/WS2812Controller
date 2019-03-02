@@ -15,7 +15,7 @@
 		this.fixedLighting = function(args, strip){
 			console.log("Starting fixed Color");
 			FixedColor1 = parseInt("0x" + args.Color1);
-			Brightness = parseInt(args.speed);
+			Brightness = parseInt(args.Brightness);
 			
 			// init the led
 		    strip.SetStripColor(FixedColor1);
