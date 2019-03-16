@@ -77,15 +77,20 @@
             <button class="btn btn-success" onclick="StartSetFixed('008000','255');"> Green </button>
             <button class="btn btn-warning" onclick="StartSetFixed('ffff00','255');"> Yellow </button>
             <button class="btn btn-danger" onclick="StartSetFixed('ffc0cb','255');"> Pink </button>
+            <button class="btn btn-secondary" onclick="StartFixed();"> Other </button>
+          </div>
+        </div>
           </div>
 		  </div>
 		   <br><br>
 
 		<div class="col-xs-12">
-		  <br><br><button
+		  <br><br>Pick Color<button
 			  class="jscolor {valueElement:FixedColorHome,value:'ffffff'} pull"
-			  style="border:2px solid black">
-			  Pick Color 1
+			  style="border:2px solid black"
+			  onchange="StartFixed();"
+			  >
+			  
 		  </button>
 			<br><br> Brightness <input type="text" id="FixedBrightnessHome" name="FixedBrightnessHome" data-provide="slider" onchange="ChangeBrightness();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
 		</div>
