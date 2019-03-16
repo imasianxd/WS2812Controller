@@ -240,15 +240,16 @@
         };
         AnimationRequest("fixed", "fixedLighting", args);
       }
-	lastColor = "FFFFFF"
+	  
+	var lastColor = "FFFFFF";
 	function StartSetFixed(ColorInput, BrightnessInput) {
 		  var args = {
           Color1: ColorInput, //Color1: "ffffff",
           Brightness: BrightnessInput //Brightness: "255"
         };
 		lastColor = ColorInput;
-		console.log(ColorInput);
-		console.log(lastColor);
+		console.log("colorinput:" + ColorInput);
+		console.log("lastcolor:" + lastColor);
         AnimationRequest("fixed", "fixedLighting", args);
       }
 	function ChangeBrightness(BrightnessInput) {
