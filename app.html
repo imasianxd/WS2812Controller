@@ -241,9 +241,10 @@
     *******************************/
       function StartFixed() {
 		  var args = {
-          Color1: $("#FixedColor1").val(), //Color1: "ffffff",
-          Brightness: $("#FixedBrightness").val() //Brightness: "255"
+          Color1: $("#FixedColorHome").val(), //Color1: "ffffff",
+          Brightness: $("#FixedBrightnessHome").val() //Brightness: "255"
         };
+		console.log(args);
         AnimationRequest("fixed", "fixedLighting", args);
       }
 	  
