@@ -248,17 +248,13 @@
           Brightness: BrightnessInput //Brightness: "255"
         };
 		lastColor = ColorInput;
-		console.log("colorinput:" + ColorInput);
-		console.log("lastcolor:" + lastColor);
         AnimationRequest("fixed", "fixedLighting", args);
       }
-	function ChangeBrightness(BrightnessInput) {
+	function ChangeBrightness() {
 		  var args = {
           Color1: lastColor, //Color1: "ffffff",
-          Brightness: BrightnessInput //Brightness: "255"
+          Brightness: $("#FixedBrightnessHome").val() //Brightness: "255"
         };
-		console.log("change brightness color:" + lastColor);
-		console.log(args);
         AnimationRequest("fixed", "fixedLighting", args);
       }       //  
      //     
