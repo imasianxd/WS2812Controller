@@ -232,8 +232,8 @@
       }
 	function StartSetFixed(Color, Bright) {
 		  var args = {
-          Color1: Color //Color1: "ffffff",
-          Brightness: Bright //Brightness: "255"
+          Color1: $("#FixedColor1").val(), //Color1: "ffffff",
+          Brightness: $("#FixedBrightness").val() //Brightness: "255"
         };
         AnimationRequest("fixed", "fixedLighting", args);
       }
