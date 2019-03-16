@@ -83,7 +83,7 @@
 		   <br><br>
 
 		<div class="col-xs-12">
-		  <br><br>Pick Color<button id="FixedColorHome" class="jscolor {onFineChange:'setLightValues()'}" value="cc66ff" >
+		  <br><br>Pick Color<button id="FixedColorHome" class="jscolor {onFineChange:'setLightValues()'}" >
 			  
 		  </button>
 			<br><br> Brightness <input type="text" id="FixedBrightnessHome" name="FixedBrightnessHome" data-provide="slider" onchange="setLightValues();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
@@ -259,6 +259,7 @@
 	}
 	var lastColor = "FFFFFF";
 	var lastBrightness = "255";
+	
 	function StartSetFixed(ColorInput, BrightnessInput) {
 		var brightnessToSet="255";
 		var colorToSet="ffffff"
