@@ -56,13 +56,12 @@
             <!-- <li class=""><a data-toggle="tab" href="#5a">Dance</a></li> -->
             <!-- <li class=""><a data-toggle="tab" href="#6a">Starry Night</a></li> -->
             <li class=""><a data-toggle="tab" href="#3a">Stop</a></li>
-			<li class=""><a data-toggle="tab" href="#fixed">Fixed Lighting</a></li>
-
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
+	<div class="tab-content clearfix">
       <div class="tab-pane active" id="1a">
         <h3>LET THERE BE LIGHT!</h3>
 		
@@ -73,7 +72,7 @@
             <button class="btn btn-danger" onclick="StartSetFixed('ff0000','255');"> Red </button>
             <button class="btn btn-success" onclick="StartSetFixed('008000','255');"> Green </button>
             <button class="btn btn-warning" onclick="StartSetFixed('ffff00','255');"> Yellow </button>
-            <button class="btn btn-danger" onclick="StartSetFixed('7C3131','150');"> Pink </button>
+            <button class="btn btn-danger" onclick="StartSetFixed('7C3131','255');"> Pink </button>
           </div>
         </div>
 		<div class="col-xs-12">
@@ -151,7 +150,10 @@
             <button class="btn btn-success" type="button" onclick="StartTwinkling();"> Start Starry Night </button>      
       </div> <!-- ./tab-pane --> 
 
-</div> <!-- ./tab-content -->
+	</div> <!-- ./tab-content -->
+
+</div> <!-- /.container -->
+
 
 
   <script>
