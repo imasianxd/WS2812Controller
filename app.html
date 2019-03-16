@@ -260,9 +260,17 @@
 		{
 			brightnessToSet="255";
 		}
-		if (colorToSet == null)
+		else
+		{
+			brightnessToSet=BrightnessInput
+		}
+		if (ColorInput == null)
 		{
 			colorToSet ="ffffff"
+		}
+		else
+		{
+			colorToSet =ColorInput
 		}
 		  var args = {
           Color1: colorToSet, //Color1: "ffffff",
