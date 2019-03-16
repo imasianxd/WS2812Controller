@@ -83,14 +83,10 @@
 		   <br><br>
 
 		<div class="col-xs-12">
-		  <br><br>Pick Color<input
-			  class="jscolor {onFineChange:'StartSetFixed(ColorInput: this)'}" 
-			  value="ffffff" 
-			  style="border:2px solid black"
-			  >
+		  <br><br>Pick Color<button id="FixedColorHome" class="jscolor {onFineChange:'setLightValues()'}" value="cc66ff" >
 			  
 		  </button>
-			<br><br> Brightness <input type="text" id="FixedBrightnessHome" name="FixedBrightnessHome" data-provide="slider" onchange="StartSetFixed(BrightnessInput: this);" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
+			<br><br> Brightness <input type="text" id="FixedBrightnessHome" name="FixedBrightnessHome" data-provide="slider" onchange="setLightValues();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
 		</div>
 		
 		<br><br>
@@ -251,33 +247,31 @@
         AnimationRequest("fixed", "fixedLighting", args);
       }
 	  
+	function setLightValues()
+	{
+		var colorValue = document.getElementById('FixedColorHome').value;
+		var brightnessValue = document.getElementById('FixedBrightnessHome').value;
+		console.log("getvalues")
+		console.log(colorValue)
+		console.log(brightnessValue)
+		
+		StartSetFixed(colorValue, brightnessValue)
+	}
 	var lastColor = "FFFFFF";
 	var lastBrightness = "255";
 	function StartSetFixed(ColorInput, BrightnessInput) {
 		var brightnessToSet="255";
 		var colorToSet="ffffff"
-		if (BrightnessInput == null)
-		{
-			brightnessToSet="255";
-		}
-		else
-		{
-			brightnessToSet=BrightnessInput
-		}
-		if (ColorInput == null)
-		{
-			colorToSet ="ffffff"
-		}
-		else
-		{
-			colorToSet =ColorInput
-		}
-		  var args = {
+		if (BrightnessInput == null) { brightnessToSet="255"; } else { brightnessToSet=BrightnessInput; }
+		if (ColorInput == null) {colorToSet ="ffffff";}else{colorToSet =ColorInput;}
+		
+		var args = {
           Color1: colorToSet, //Color1: "ffffff",
           Brightness: brightnessToSet //Brightness: "255"
         };
 		lastColor = colorToSet;
 		lastBrightness = "255";
+		document.getElementById('FixedColorHome').value = lastColor;
 		
 		console.log(args);
 		console.log("lastcolor:" + lastColor)
