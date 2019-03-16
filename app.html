@@ -83,10 +83,10 @@
 		   <br><br>
 
 		<div class="col-xs-12">
-		  <br><br>Pick Color<button id="FixedColorHome" class="jscolor {onFineChange:'setLightValues()'}" >
+		  <br><br>Pick Color<button id="FixedColorHome" class="jscolor {onFineChange:'setColorValue()'}" >
 			  
 		  </button>
-			<br><br> Brightness <input type="text" id="FixedBrightnessHome" name="FixedBrightnessHome" data-provide="slider" onchange="setLightValues();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
+			<br><br> Brightness <input type="text" id="FixedBrightnessHome" name="FixedBrightnessHome" data-provide="slider" onchange="setBrightnessValue();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
 		</div>
 		
 		<br><br>
@@ -250,18 +250,17 @@
 	function setColorValue(jscolor)
 	{
 		var colorValue = jscolor;
-		console.log("getvalues")
-		console.log(colorValue)
+		console.log("getvalues");
+		console.log(colorValue);
 		
-		StartSetFixed(ColorInput: colorValue)
+		StartSetFixed(colorValue,null);
 	}
 	function setBrightnessValue()
 	{
 		var brightnessValue = document.getElementById('FixedBrightnessHome').value;
-		console.log("getvalues")
-		console.log(brightnessValue)
-		
-		StartSetFixed(BrightnessInput: brightnessValue)
+		console.log("getvalues");
+		console.log(brightnessValue);
+		StartSetFixed(null, brightnessValue);
 	}
 	
 	var lastColor = "FFFFFF";
@@ -269,7 +268,7 @@
 	
 	function StartSetFixed(ColorInput, BrightnessInput) {
 		var brightnessToSet="255";
-		var colorToSet="ffffff"
+		var colorToSet="ffffff";
 		if (BrightnessInput == null) { brightnessToSet=lastBrightness; } else { brightnessToSet=BrightnessInput; }
 		if (ColorInput == null) {colorToSet =lastColor;}else{colorToSet =ColorInput;}
 		
@@ -281,7 +280,7 @@
 		lastBrightness = brightnessToSet;
 		
 		console.log(args);
-		console.log("lastcolor:" + lastColor)
+		console.log("lastcolor:" + lastColor);
 		
         AnimationRequest("fixed", "fixedLighting", args);
       }
