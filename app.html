@@ -247,32 +247,38 @@
         AnimationRequest("fixed", "fixedLighting", args);
       }
 	  
-	function setLightValues()
+	function setColorValue(jscolor)
 	{
-		var colorValue = document.getElementById('FixedColorHome').value;
-		var brightnessValue = document.getElementById('FixedBrightnessHome').value;
+		var colorValue = jscolor;
 		console.log("getvalues")
 		console.log(colorValue)
+		
+		StartSetFixed(ColorInput: colorValue)
+	}
+	function setBrightnessValue()
+	{
+		var brightnessValue = document.getElementById('FixedBrightnessHome').value;
+		console.log("getvalues")
 		console.log(brightnessValue)
 		
-		StartSetFixed(colorValue, brightnessValue)
+		StartSetFixed(BrightnessInput: brightnessValue)
 	}
+	
 	var lastColor = "FFFFFF";
 	var lastBrightness = "255";
 	
 	function StartSetFixed(ColorInput, BrightnessInput) {
 		var brightnessToSet="255";
 		var colorToSet="ffffff"
-		if (BrightnessInput == null) { brightnessToSet="255"; } else { brightnessToSet=BrightnessInput; }
-		if (ColorInput == null) {colorToSet ="ffffff";}else{colorToSet =ColorInput;}
+		if (BrightnessInput == null) { brightnessToSet=lastBrightness; } else { brightnessToSet=BrightnessInput; }
+		if (ColorInput == null) {colorToSet =lastColor;}else{colorToSet =ColorInput;}
 		
 		var args = {
           Color1: colorToSet, //Color1: "ffffff",
           Brightness: brightnessToSet //Brightness: "255"
         };
 		lastColor = colorToSet;
-		lastBrightness = "255";
-		document.getElementById('FixedColorHome').value = lastColor;
+		lastBrightness = brightnessToSet;
 		
 		console.log(args);
 		console.log("lastcolor:" + lastColor)
