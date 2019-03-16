@@ -71,17 +71,17 @@
 		
 		<div class="row"> 
           <div class="col-xs-12">
-            <button class="btn btn-danger" onclick="StartSetFixed('ffffff','255');"> White </button>
-			<button class="btn btn-danger" onclick="StartSetFixed('0000ff','255');"> Blue </button>
+            <button class="btn btn-light" onclick="StartSetFixed('ffffff','255');"> White </button>
+			<button class="btn btn-primary" onclick="StartSetFixed('0000ff','255');"> Blue </button>
             <button class="btn btn-danger" onclick="StartSetFixed('ff0000','255');"> Red </button>
-            <button class="btn btn-danger" onclick="StartSetFixed('008000','255');"> Green </button>
-            <button class="btn btn-danger" onclick="StartSetFixed('ffff00','255');"> Yellow </button>
+            <button class="btn btn-success" onclick="StartSetFixed('008000','255');"> Green </button>
+            <button class="btn btn-warning" onclick="StartSetFixed('ffff00','255');"> Yellow </button>
             <button class="btn btn-danger" onclick="StartSetFixed('ffc0cb','255');"> Pink </button>
           </div>
 		  </div>
 		   <br><br>
 		<div class="col-xs-12">
-			<br><br> Brightness <input type="text" id="FixedBrightness" name="FixedBrightness" data-provide="slider" onchange="StartFixed();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
+			<br><br> Brightness <input type="text" id="FixedBrightnessHome" name="FixedBrightnessHome" data-provide="slider" onchange="ChangeBrightness();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
 		</div>
 		
 		<br><br>
@@ -155,19 +155,19 @@
 	  
 	  <div class="tab-pane" id="fixed">
     
-        <div class="clearfix">&nbsp;</div>
+		<div class="clearfix">&nbsp;</div>
 		
 		  <button
-              class="jscolor {valueElement:FixedColor1,value:'ffffff'} pull"
-              style="border:2px solid black">
-              Pick Color 1
-          </button>
-          <input style="display:none;" id="FixedColor1">
+			  class="jscolor {valueElement:FixedColor1,value:'ffffff'} pull"
+			  style="border:2px solid black">
+			  Pick Color 1
+		  </button>
+		  <input style="display:none;" id="FixedColor1">
 		  <div class="col-xs-12">
-              <br><br> Brightness <input type="text" id="FixedBrightness" name="FixedBrightness" data-provide="slider" onchange="StartFixed();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
+			  <br><br> Brightness <input type="text" id="FixedBrightness" name="FixedBrightness" data-provide="slider" onchange="StartFixed();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
 			</div>
 			
-        </div>
+		</div>
         <div class="row"> 
           <div class="col-xs-12">
             <button class="btn btn-danger" onclick="StartFixed();"> turn on light </button>
@@ -240,14 +240,22 @@
         };
         AnimationRequest("fixed", "fixedLighting", args);
       }
+	lastColor = "FFFFFF"
 	function StartSetFixed(ColorInput, BrightnessInput) {
 		  var args = {
           Color1: ColorInput, //Color1: "ffffff",
           Brightness: BrightnessInput //Brightness: "255"
         };
+		lastColor = ColorInput;
         AnimationRequest("fixed", "fixedLighting", args);
       }
-	          //  
+	function ChangeBrightness(BrightnessInput) {
+		  var args = {
+          Color1: lastColor, //Color1: "ffffff",
+          Brightness: BrightnessInput //Brightness: "255"
+        };
+        AnimationRequest("fixed", "fixedLighting", args);
+      }       //  
      //     
 	  
     /*******************************
