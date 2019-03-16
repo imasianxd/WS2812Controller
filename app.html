@@ -83,14 +83,14 @@
 		   <br><br>
 
 		<div class="col-xs-12">
-		  <br><br>Pick Color<button
-			  class="jscolor {value:'ffffff'}"
+		  <br><br>Pick Color<input
+			  class="jscolor {onFineChange:'StartSetFixed(ColorInput: this)'}" 
+			  value="ffffff" 
 			  style="border:2px solid black"
-			  onchange="StartSetFixed(this.jscolor,255);"
 			  >
 			  
 		  </button>
-			<br><br> Brightness <input type="text" id="FixedBrightnessHome" name="FixedBrightnessHome" data-provide="slider" onchange="ChangeBrightness();" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
+			<br><br> Brightness <input type="text" id="FixedBrightnessHome" name="FixedBrightnessHome" data-provide="slider" onchange="StartSetFixed(BrightnessInput: this);" data-slider-min="1" data-slider-max="255" data-slider-step="1" data-slider-value="255" data-slider-tooltip="hide" >
 		</div>
 		
 		<br><br>
@@ -252,13 +252,28 @@
       }
 	  
 	var lastColor = "FFFFFF";
+	var lastBrightness = "255";
 	function StartSetFixed(ColorInput, BrightnessInput) {
+		var brightnessToSet="255";
+		var colorToSet="ffffff"
+		if (BrightnessInput == null)
+		{
+			brightnessToSet="255";
+		}
+		if (colorToSet == null)
+		{
+			colorToSet ="ffffff"
+		}
 		  var args = {
-          Color1: ColorInput, //Color1: "ffffff",
-          Brightness: BrightnessInput //Brightness: "255"
+          Color1: colorToSet, //Color1: "ffffff",
+          Brightness: brightnessToSet //Brightness: "255"
         };
-		console.log(args)
-		lastColor = ColorInput;
+		lastColor = colorToSet;
+		lastBrightness = "255";
+		
+		console.log(args);
+		console.log("lastcolor:" + lastColor)
+		
         AnimationRequest("fixed", "fixedLighting", args);
       }
 	function ChangeBrightness() {
