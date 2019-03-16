@@ -77,7 +77,6 @@
             <button class="btn btn-success" onclick="StartSetFixed('008000','255');"> Green </button>
             <button class="btn btn-warning" onclick="StartSetFixed('ffff00','255');"> Yellow </button>
             <button class="btn btn-danger" onclick="StartSetFixed('ffc0cb','255');"> Pink </button>
-            <button class="btn btn-secondary" onclick="StartFixed();"> Other </button>
           </div>
         </div>
           </div>
@@ -98,7 +97,7 @@
 		  <div class="col-xs-12">
             <br><br><button class="btn btn-danger" onclick="Stop();"> Stop Strip </button>
           </div>
-		
+		</div>
       </div> <!-- ./tab-pane -->
 
       <div class="tab-pane" id="2a">
@@ -258,6 +257,7 @@
           Color1: ColorInput, //Color1: "ffffff",
           Brightness: BrightnessInput //Brightness: "255"
         };
+		console.log(args)
 		lastColor = ColorInput;
         AnimationRequest("fixed", "fixedLighting", args);
       }
@@ -266,6 +266,8 @@
           Color1: lastColor, //Color1: "ffffff",
           Brightness: $("#FixedBrightnessHome").val() //Brightness: "255"
         };
+				console.log(args)
+
         AnimationRequest("fixed", "fixedLighting", args);
       }       //  
      //     
