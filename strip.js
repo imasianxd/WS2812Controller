@@ -14,7 +14,6 @@ function strip() {
     this.NUM_LEDS = NUM_LEDS;
     this.Mode = "";
     this.Lights = []; 
-	
     this.Clear = function () {
         ws281x.reset();
     };
@@ -24,7 +23,6 @@ function strip() {
     */
     this.Stop = function () {
         strip.Clear();
-		SetStripColor(0);
         CurrentMode = MODES.CLEAR;
     };
 
@@ -42,7 +40,7 @@ function strip() {
         for (var i = 0; i < NUM_LEDS; i++) {
             this.Lights[i] = color;
         }
-        //this.Render();
+        this.Render();
     };
 
     this.Render = function () {

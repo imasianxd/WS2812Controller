@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Room Light </title>
-    <link rel="icon" href="icon.png">
-	
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	
+    <title> WS2812 Control </title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
     <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <style>
@@ -50,20 +48,21 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a  data-toggle="tab" href="#home">Home</a></li>
-            <li class=""><a data-toggle="tab" href="#rainbow">Rainbow</a></li>
-            <li class=""><a data-toggle="tab" href="#xmas1">Christmas Mode 1</a></li>
-            <li class=""><a data-toggle="tab" href="#xmas2">Christmas Iterate</a></li>
-            <li class=""><a data-toggle="tab" href="#fade">Fade 2 Colors</a></li>
-			<li class=""><a data-toggle="tab" href="#exp">Experimental</a></li>
+            <li class="active"><a  data-toggle="tab" href="#1a">Home</a></li>
+            <li class=""><a  data-toggle="tab" href="#2a">Rainbow</a></li>
+            <li class=""><a  data-toggle="tab" href="#xmas1">Christmas Mode 1</a></li>
+            <li class=""><a  data-toggle="tab" href="#xmas2">Christmas Iterate</a></li>
+            <li class=""><a data-toggle="tab" href="#4a">Fade 2 Colors</a></li>
+            <!-- <li class=""><a data-toggle="tab" href="#5a">Dance</a></li> -->
+            <!-- <li class=""><a data-toggle="tab" href="#6a">Starry Night</a></li> -->
+            <li class=""><a data-toggle="tab" href="#3a">Stop</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
-	<div class="tab-content clearfix"> 
-	
-      <div class="tab-pane active" id="home"> <!-- home/fixed -->
+	<div class="tab-content clearfix">
+      <div class="tab-pane active" id="1a">
         <h3>LET THERE BE LIGHT!</h3>
 		
 		<div class="row"> 
@@ -89,7 +88,7 @@
           </div>
       </div> <!-- ./tab-pane -->
 
-      <div class="tab-pane" id="rainbow"> <!-- rainbow -->
+      <div class="tab-pane" id="2a">
         <div class="clearfix">&nbsp;</div>
         <div class="row"> 
           <div class="col-xs-12">
@@ -102,7 +101,18 @@
         </div>
       </div> <!-- ./tab-pane -->
 
-      <div class="tab-pane" id="fade"> <!-- fade -->
+      <div class="tab-pane" id="3a">
+    
+        <div class="clearfix">&nbsp;</div>
+        <div class="row"> 
+          <div class="col-xs-12">
+            <button class="btn btn-danger" onclick="Stop();"> Stop Strip </button>
+          </div>
+        </div>
+    
+      </div> <!-- ./tab-pane -->
+
+      <div class="tab-pane" id="4a">
           <p> Use this mode to fade the strip between two colors </p>
           <button
               class="jscolor {valueElement:Fade2Colors1,value:'66ccff'} pull"
@@ -124,23 +134,22 @@
 
       </div> <!-- ./tab-pane -->
 
-      <div class="tab-pane" id="xmas1"> <!-- xmas blink -->
+      <div class="tab-pane" id="5a">
+            <button class="btn btn-success" type="button" onclick="StartDancing();"> Start Dancing </button>
+      </div> <!-- ./tab-pane -->
+
+      <div class="tab-pane" id="xmas1">
           <button class="btn btn-success" type="button" onclick="StartXmas1();"> Start Christmas Mode 1 </button>
       </div> <!-- ./tab-pane -->     
       
-      <div class="tab-pane" id="xmas2"> <!-- xmas scroll -->
-	  
+      <div class="tab-pane" id="xmas2">
           <button class="btn btn-success" type="button" onclick="StartXmas2();"> Start Christmas Iterate </button>
       </div> <!-- ./tab-pane -->           
-	
-	  <div class="tab-pane" id="exp"> <!-- experimental patterns -->
-		<div class="col-xs-12">
-		    <br><br>Pick A Color<button id="setColorExpDropdown" class="jscolor {valueElement:setColorExp,value:'ffffff'}" > </button>
-			<br><br>Or Check To Use Random Color <input id="randomColorExp" name="RandomColor" type="checkbox" value="Random" class="checkbox">
-			<button class="btn btn-success" type="button" onclick="StartExperimental();"> Start </button>
-		  </div>
-      </div> <!-- ./tab-pane -->        
-	  
+
+      <div class="tab-pane" id="6a">
+            <button class="btn btn-success" type="button" onclick="StartTwinkling();"> Start Starry Night </button>      
+      </div> <!-- ./tab-pane --> 
+
 	</div> <!-- ./tab-content -->
 
 </div> <!-- /.container -->
@@ -198,12 +207,21 @@
       }
 	  
 	/*******************************
-      fixed
+      FIXED
     *******************************/
+      function StartFixed() {
+		  var args = {
+          Color1: $("#FixedColorHome").val(), //Color1: "ffffff",
+          Brightness: $("#FixedBrightnessHome").val() //Brightness: "255"
+        };
+		console.log(args);
+        AnimationRequest("fixed", "fixedLighting", args);
+      }
+	  
 	function setColorValue(jscolor)
 	{
 		var colorValue = jscolor.toHEXString().replace('#','');
-		console.log("set color value: ");
+		console.log("getvalues");
 		console.log(colorValue);
 		
 		StartSetFixed(colorValue,null);
@@ -211,7 +229,7 @@
 	function setBrightnessValue()
 	{
 		var brightnessValue = document.getElementById('FixedBrightnessHome').value;
-		console.log("set brightness value: ");
+		console.log("getvalues");
 		console.log(brightnessValue);
 		StartSetFixed(null, brightnessValue);
 	}
@@ -235,29 +253,19 @@
 		console.log(args);
 		console.log("lastcolor:" + lastColor);
 		
-        AnimationRequest("fixed", "fixedLightingPulse", args);
+        AnimationRequest("fixed", "fixedLighting", args);
       }
-	  
-	/*******************************
-      experimental
-    *******************************/
-      function StartExperimental() {
-	  
-		var blinkMode = "setColor";
-		if (document.getElementById('randomColorExp').checked){
-			blinkMode = "random";
-		};
-
-		console.log("experimental mode:" + mode);
-		console.log("experimental color:" + $("#setColorExp").val());
-		
-		var args = {
-          mode: blinkMode, 
-          color: $("#setColorExp").val()
+	function ChangeBrightness() {
+		  var args = {
+          Color1: lastColor, //Color1: "ffffff",
+          Brightness: $("#FixedBrightnessHome").val() //Brightness: "255"
         };
-        AnimationRequest("experimental", "StarryNight", args);
-      }
+				console.log(args)
 
+        AnimationRequest("fixed", "fixedLighting", args);
+      }       //  
+     //     
+	  
     /*******************************
       common
     *******************************/
@@ -270,6 +278,98 @@
             $(this).collapse('hide');
         }
       });
+
+    /*******************************
+      deprecated
+    *******************************/
+      function StartDancing() {
+        $Strip.BasicGET("dance");
+      }
+
+      function StartTwinkling() {
+        $Strip.BasicGET("twinkle");
+      }
+
+      function UpdateDanceSpeed() {
+       $Strip.POST( "dancespeed", { speed: $("#dancespeed").val() } ); 
+      }
+
+      function fade() {
+        $Strip.BasicGET("fade");
+      } 
+
+      function spin() {
+        $Strip.BasicGET("spin");
+      }
+
+      var $Strip = {} || $Strip;
+
+      $Strip = {
+        ColorPicker: "",
+        Interval: "",
+        CanSubmitOverride: true,
+        CanSubmit: true,
+
+        SetColorGroup: function(hex, array) {
+          $(".colorpicker_hex input").val("#0066ff").trigger("change");
+        },
+
+        SetColor: function(hex, index) {
+          if ($Strip.CanSubmit || $Strip.CanSubmitOverride) {
+            $Strip.POST("color", { color: hex, index: index });
+            $Strip.CanSubmit = false;
+          }        
+        },
+        Start: function() {
+          $Strip.BasicGET("pulse");
+        }, 
+        Stop: function() {
+          $Strip.BasicGET("istop");
+        }, 
+        POST: function(action,data) {
+          $.ajax({
+              url: '/'+action,
+              type: 'POST',
+              data: data,
+            })
+            .done(function() {
+            })
+            .fail(function() {
+            })
+            .always(function() {
+              $Strip.CanSubmit = true;
+            });
+        },
+        BasicGET: function(action) {
+            $.ajax({
+              url: '/'+action,
+              type: 'GET',
+              data: {},
+            })
+            .done(function() {
+            })
+            .fail(function() {
+            })
+            .always(function() {
+            });
+        }
+      };
+
+      function prepareColors() {
+        $Strip.ColorPicker = $("[data-role='colorpicker']").each(function(){
+          var index = $(this).data("index");
+          CurrentArrayObjects[index] = $(this).ColorPicker({
+            flat: true,
+            onChange: function (hsb, hex, rgb) {
+              $Strip.SetColor(hex, index);
+            }
+          });
+        });
+      }
+    
+      var CurrentArray = [];
+      var CurrentArrayObjects = [];
+
 
   </script>
 
