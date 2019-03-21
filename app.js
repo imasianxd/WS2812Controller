@@ -51,6 +51,7 @@
 	var rainbow = require("./animations/rainbow.js");
 	var control = require("./animations/control.js");
 	var fixed = require("./animations/fixed.js");
+	var exp = require("./animations/experimental.js");
 
 
 /*******************************
@@ -118,6 +119,9 @@
 			break;
 			case "fixed":
 				lib = fixed;
+			break;
+			case "experimental":
+				lib = exp;
 			break;
 		}
 

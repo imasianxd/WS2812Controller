@@ -7,7 +7,6 @@
 	function control() {
 
 		this.Stop = function(args, strip) {
-			strip.SetStripColor(0);
 			strip.Mode = "STOP";
 			console.log("Stopped strip");
 		};
