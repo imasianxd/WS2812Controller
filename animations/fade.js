@@ -26,7 +26,7 @@
 		    strip.SetStripColor(CurrentFadeColor);
 
 		    strip.Mode = "GoFade2";
-			//this.FadeTick(strip);
+			this.FadeTick(strip);
 		};
 
 		this.FadeTick = function(strip) {
