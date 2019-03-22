@@ -15,7 +15,7 @@ function fixed() {
 		if (strip.Mode = name + "fixed"){
 			strip.Stop();
 			strip.Mode = null; 
-			clearTimeout(loop);
+			setTimeout(function(){}, refreshInterval + 50)
 		}
 		
 		strip.Mode = name + "fixed";
@@ -35,7 +35,7 @@ function fixed() {
         
         strip.Render();
 
-        loop = setTimeout(function () {
+        setTimeout(function () {
             if (strip.Mode == name + "fixed") {
                 _this.fixedLighting(args, strip);
             } else {
