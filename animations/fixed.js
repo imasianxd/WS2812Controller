@@ -23,6 +23,12 @@
 			strip.SetBrightness(Brightness);
 			strip.Mode = name + "fixed";
 			
+			setTimeout(function () { 
+
+				strip.Render(); 
+
+			}, 1000);
+			
 			console.log("started fixed mode");
 		};
 	}
