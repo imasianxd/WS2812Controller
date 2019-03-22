@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> WS2812 Control </title>
+    <title> Room Light </title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
     <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
@@ -48,21 +48,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a  data-toggle="tab" href="#1a">Home</a></li>
-            <li class=""><a  data-toggle="tab" href="#2a">Rainbow</a></li>
-            <li class=""><a  data-toggle="tab" href="#xmas1">Christmas Mode 1</a></li>
-            <li class=""><a  data-toggle="tab" href="#xmas2">Christmas Iterate</a></li>
-            <li class=""><a data-toggle="tab" href="#4a">Fade 2 Colors</a></li>
-            <!-- <li class=""><a data-toggle="tab" href="#5a">Dance</a></li> -->
-            <!-- <li class=""><a data-toggle="tab" href="#6a">Starry Night</a></li> -->
-            <li class=""><a data-toggle="tab" href="#3a">Stop</a></li>
+            <li class="active"><a  data-toggle="tab" href="#home">Home</a></li>
+            <li class=""><a data-toggle="tab" href="#rainbow">Rainbow</a></li>
+            <li class=""><a data-toggle="tab" href="#xmas1">Christmas Mode 1</a></li>
+            <li class=""><a data-toggle="tab" href="#xmas2">Christmas Iterate</a></li>
+            <li class=""><a data-toggle="tab" href="#fade">Fade 2 Colors</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
-	<div class="tab-content clearfix">
-      <div class="tab-pane active" id="1a">
+	<div class="tab-content clearfix"> 
+	
+      <div class="tab-pane active" id="home"> <!-- home/fixed -->
         <h3>LET THERE BE LIGHT!</h3>
 		
 		<div class="row"> 
@@ -88,7 +86,7 @@
           </div>
       </div> <!-- ./tab-pane -->
 
-      <div class="tab-pane" id="2a">
+      <div class="tab-pane" id="rainbow"> <!-- rainbow -->
         <div class="clearfix">&nbsp;</div>
         <div class="row"> 
           <div class="col-xs-12">
@@ -101,18 +99,7 @@
         </div>
       </div> <!-- ./tab-pane -->
 
-      <div class="tab-pane" id="3a">
-    
-        <div class="clearfix">&nbsp;</div>
-        <div class="row"> 
-          <div class="col-xs-12">
-            <button class="btn btn-danger" onclick="Stop();"> Stop Strip </button>
-          </div>
-        </div>
-    
-      </div> <!-- ./tab-pane -->
-
-      <div class="tab-pane" id="4a">
+      <div class="tab-pane" id="fade"> <!-- fade -->
           <p> Use this mode to fade the strip between two colors </p>
           <button
               class="jscolor {valueElement:Fade2Colors1,value:'66ccff'} pull"
@@ -134,22 +121,15 @@
 
       </div> <!-- ./tab-pane -->
 
-      <div class="tab-pane" id="5a">
-            <button class="btn btn-success" type="button" onclick="StartDancing();"> Start Dancing </button>
-      </div> <!-- ./tab-pane -->
-
-      <div class="tab-pane" id="xmas1">
+      <div class="tab-pane" id="xmas1"> <!-- xmas blink -->
           <button class="btn btn-success" type="button" onclick="StartXmas1();"> Start Christmas Mode 1 </button>
       </div> <!-- ./tab-pane -->     
       
-      <div class="tab-pane" id="xmas2">
+      <div class="tab-pane" id="xmas2"> <!-- xmas scroll -->
+	  
           <button class="btn btn-success" type="button" onclick="StartXmas2();"> Start Christmas Iterate </button>
       </div> <!-- ./tab-pane -->           
-
-      <div class="tab-pane" id="6a">
-            <button class="btn btn-success" type="button" onclick="StartTwinkling();"> Start Starry Night </button>      
-      </div> <!-- ./tab-pane --> 
-
+	  
 	</div> <!-- ./tab-content -->
 
 </div> <!-- /.container -->
@@ -208,16 +188,7 @@
 	  
 	/*******************************
       FIXED
-    *******************************/
-      function StartFixed() {
-		  var args = {
-          Color1: $("#FixedColorHome").val(), //Color1: "ffffff",
-          Brightness: $("#FixedBrightnessHome").val() //Brightness: "255"
-        };
-		console.log(args);
-        AnimationRequest("fixed", "fixedLighting", args);
-      }
-	  
+    *******************************/	  
 	function setColorValue(jscolor)
 	{
 		var colorValue = jscolor.toHEXString().replace('#','');
@@ -255,16 +226,6 @@
 		
         AnimationRequest("fixed", "fixedLighting", args);
       }
-	function ChangeBrightness() {
-		  var args = {
-          Color1: lastColor, //Color1: "ffffff",
-          Brightness: $("#FixedBrightnessHome").val() //Brightness: "255"
-        };
-				console.log(args)
-
-        AnimationRequest("fixed", "fixedLighting", args);
-      }       //  
-     //     
 	  
     /*******************************
       common
