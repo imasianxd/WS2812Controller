@@ -31,18 +31,6 @@ function fixed() {
         }, RainbowSpeed);
     };
 
-
-    this.RainbowSpeed = function(args, strip) {
-        var val = parseInt(args.speed);
-        var mappedVal = common.map_range(val, 0, 100, 50, 5);
-        if (typeof mappedVal === "number") {
-            RainbowSpeed = mappedVal;
-            console.log("New rainbow speed: " + RainbowSpeed);
-        } else {
-            RainbowSpeed = 1000 / 30;
-        }
-    };
-
 }
 
-module.exports = new rainbow();
+module.exports = new fixed();
