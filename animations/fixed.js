@@ -26,7 +26,11 @@
 			strip.Render();
 
 			setTimeout(function () {
-				_this.fixedLighting(args, strip);
+				if (strip.Mode == name + "fixed") {
+					_this.fixedLighting(args, strip);
+				} else {
+					strip.Stop();
+				}
 			}, 1000);
 		};
 	}
