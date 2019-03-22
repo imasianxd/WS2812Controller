@@ -24,6 +24,9 @@
 			strip.Mode = name + "fixed";
 			
 			strip.Render();
+			
+			setTimeout(function () { strip.Render(); }, 1000);
+
 		};
 		
 		this.fixedLighting2 = function(args, strip) {
@@ -40,7 +43,6 @@
 			strip.Mode = name + "fixed";
 			strip.Render();
 			//render the strip continuously
-			//setTimeout(function () { strip.Render(); }, 1000);
     };
 
 	}
