@@ -14,7 +14,7 @@ function rainbow() {
         this.RainbowTick(args, strip);
     };
    
-    this.RainbowTick = function(args, strip) {
+    this.RainbowTick2 = function(args, strip) {
         var _this = this;
         for (var i = 0; i < strip.NUM_LEDS; i++) {
             strip.Lights[i] = parseInt("0xffffff");//common.colorwheel((RainbowOffset + i) % 256);
