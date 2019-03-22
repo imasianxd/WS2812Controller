@@ -37,7 +37,7 @@
 
 			setTimeout(function () {
 				if (strip.Mode == name + "fixed") {
-					_this.fixedLighting(args, strip);
+					strip.Render(); //_this.fixedLighting(args, strip);
 				} else {
 					strip.Stop();
 					New = false;
