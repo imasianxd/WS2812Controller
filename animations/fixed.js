@@ -23,12 +23,13 @@
 			Brightness = parseInt(args.Brightness);
 			
 			if (FixedColor1 != lastColor){
-				clearTimeout(loop);
+				//clearTimeout(loop);
 				conditionChanged = true;
-			}
-			if (Brightness != lastBrightness){
-				clearTimeout(loop);
+			} else if (Brightness != lastBrightness){
+				//clearTimeout(loop);
 				conditionChanged = true;
+			} else{
+				conditionChanged = false;
 			}
 			
 			var _this = this;
@@ -41,16 +42,14 @@
 			strip.Render();
 
 			loop = setTimeout(function () {
-				if (strip.Mode == name + "fixed") {
+				if (!conditionChanged) {
 					_this.fixedLighting(args, strip);
 				} else {
 					strip.Stop();
 					conditionChanged = false;
 				}
 			}, 1000);
-			
-				
-		    
+
 		};
 	}
 
