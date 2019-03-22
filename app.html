@@ -270,7 +270,59 @@
             $(this).collapse('hide');
         }
       });
-
+		
+      var $Strip = {} || $Strip;  
+  
+      $Strip = {  
+        ColorPicker: "",  
+        Interval: "",  
+        CanSubmitOverride: true,  
+        CanSubmit: true,  
+  
+        SetColorGroup: function(hex, array) {  
+          $(".colorpicker_hex input").val("#0066ff").trigger("change");  
+        },  
+  
+        SetColor: function(hex, index) {  
+          if ($Strip.CanSubmit || $Strip.CanSubmitOverride) {  
+            $Strip.POST("color", { color: hex, index: index });  
+            $Strip.CanSubmit = false;  
+          }          
+        },  
+        Start: function() {  
+          $Strip.BasicGET("pulse");  
+        },   
+        Stop: function() {  
+          $Strip.BasicGET("istop");  
+        },   
+        POST: function(action,data) {  
+          $.ajax({  
+              url: '/'+action,  
+              type: 'POST',  
+              data: data,  
+            })  
+            .done(function() {  
+            })  
+            .fail(function() {  
+            })  
+            .always(function() {  
+              $Strip.CanSubmit = true;  
+            });  
+        },  
+        BasicGET: function(action) {  
+            $.ajax({  
+              url: '/'+action,  
+              type: 'GET',  
+              data: {},  
+            })  
+            .done(function() {  
+            })  
+            .fail(function() {  
+            })  
+            .always(function() {  
+            });  
+        }  
+      }; 
   </script>
 
 
