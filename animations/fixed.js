@@ -48,7 +48,7 @@
 					strip.Stop();
 					conditionChanged = false;
 				}
-			}, 1000);
+			}, 100);
 
 		};
 	}
