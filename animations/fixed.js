@@ -10,18 +10,24 @@
 
 	var FixedColor1;
 	var Brightness;
+	var New = false;
 
 	function fixed() {
 		this.fixedLighting = function(args, strip){
 			console.log("Starting fixed Color");
-			
+			strip.Mode = name + "fixed";
+			this.continuousPulse(args, strip);
+	
+		    
+		};
+		
+		this.continuousPulse = function(args, strip){
 			FixedColor1 = parseInt("0x" + args.Color1);
 			Brightness = parseInt(args.Brightness);
+
 			var _this = this;
-			
-		    strip.SetStripColor(FixedColor1);
+			strip.SetStripColor(FixedColor1);
 			strip.SetBrightness(Brightness);
-			strip.Mode = name + "fixed";
 
 			strip.Render();
 
@@ -30,9 +36,12 @@
 					_this.fixedLighting(args, strip);
 				} else {
 					strip.Stop();
+					New = false;
 				}
 			}, 1000);
-		};
+			
+			
+		}
 	}
 
 module.exports = new fixed();
