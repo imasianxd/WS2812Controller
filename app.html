@@ -271,58 +271,97 @@
         }
       });
 		
-      var $Strip = {} || $Strip;  
-  
-      $Strip = {  
-        ColorPicker: "",  
-        Interval: "",  
-        CanSubmitOverride: true,  
-        CanSubmit: true,  
-  
-        SetColorGroup: function(hex, array) {  
-          $(".colorpicker_hex input").val("#0066ff").trigger("change");  
-        },  
-  
-        SetColor: function(hex, index) {  
-          if ($Strip.CanSubmit || $Strip.CanSubmitOverride) {  
-            $Strip.POST("color", { color: hex, index: index });  
-            $Strip.CanSubmit = false;  
-          }          
-        },  
-        Start: function() {  
-          $Strip.BasicGET("pulse");  
-        },   
-        Stop: function() {  
-          $Strip.BasicGET("istop");  
-        },   
-        POST: function(action,data) {  
-          $.ajax({  
-              url: '/'+action,  
-              type: 'POST',  
-              data: data,  
-            })  
-            .done(function() {  
-            })  
-            .fail(function() {  
-            })  
-            .always(function() {  
-              $Strip.CanSubmit = true;  
-            });  
-        },  
-        BasicGET: function(action) {  
-            $.ajax({  
-              url: '/'+action,  
-              type: 'GET',  
-              data: {},  
-            })  
-            .done(function() {  
-            })  
-            .fail(function() {  
-            })  
-            .always(function() {  
-            });  
-        }  
-      }; 
+    /*******************************
+      deprecated
+    *******************************/
+      function StartDancing() {
+        $Strip.BasicGET("dance");
+      }
+
+      function StartTwinkling() {
+        $Strip.BasicGET("twinkle");
+      }
+
+      function UpdateDanceSpeed() {
+       $Strip.POST( "dancespeed", { speed: $("#dancespeed").val() } ); 
+      }
+
+      function fade() {
+        $Strip.BasicGET("fade");
+      } 
+
+      function spin() {
+        $Strip.BasicGET("spin");
+      }
+
+      var $Strip = {} || $Strip;
+
+      $Strip = {
+        ColorPicker: "",
+        Interval: "",
+        CanSubmitOverride: true,
+        CanSubmit: true,
+
+        SetColorGroup: function(hex, array) {
+          $(".colorpicker_hex input").val("#0066ff").trigger("change");
+        },
+
+        SetColor: function(hex, index) {
+          if ($Strip.CanSubmit || $Strip.CanSubmitOverride) {
+            $Strip.POST("color", { color: hex, index: index });
+            $Strip.CanSubmit = false;
+          }        
+        },
+        Start: function() {
+          $Strip.BasicGET("pulse");
+        }, 
+        Stop: function() {
+          $Strip.BasicGET("istop");
+        }, 
+        POST: function(action,data) {
+          $.ajax({
+              url: '/'+action,
+              type: 'POST',
+              data: data,
+            })
+            .done(function() {
+            })
+            .fail(function() {
+            })
+            .always(function() {
+              $Strip.CanSubmit = true;
+            });
+        },
+        BasicGET: function(action) {
+            $.ajax({
+              url: '/'+action,
+              type: 'GET',
+              data: {},
+            })
+            .done(function() {
+            })
+            .fail(function() {
+            })
+            .always(function() {
+            });
+        }
+      };
+
+      function prepareColors() {
+        $Strip.ColorPicker = $("[data-role='colorpicker']").each(function(){
+          var index = $(this).data("index");
+          CurrentArrayObjects[index] = $(this).ColorPicker({
+            flat: true,
+            onChange: function (hsb, hex, rgb) {
+              $Strip.SetColor(hex, index);
+            }
+          });
+        });
+      }
+    
+      var CurrentArray = [];
+      var CurrentArrayObjects = [];
+
   </script>
 
 
