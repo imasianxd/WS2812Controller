@@ -15,7 +15,7 @@ function fixed() {
 		if (strip.Mode = name + "fixed"){
 			strip.Stop();
 			strip.Mode = null; 
-			setTimeout(function(){}, refreshInterval + 50)
+			setTimeout(function(){ console.log(" "); }, refreshInterval + 50)
 		}
 		
 		strip.Mode = name + "fixed";
@@ -37,9 +37,10 @@ function fixed() {
 
         setTimeout(function () {
             if (strip.Mode == name + "fixed") {
-                _this.fixedLighting(args, strip);
+                _this.refresh(args, strip);
             } else {
                 strip.Stop();
+				strip.Mode = null; 
             }
         }, refreshInterval);
 	}
