@@ -23,8 +23,8 @@ function fixed() {
         strip.Render();
 
         setTimeout(function () {
-            if (strip.Mode == name + "rainbow") {
-                _this.RainbowTick(args, strip);
+            if (strip.Mode == name + "fixed") {
+                _this.fixedLighting(args, strip);
             } else {
                 RainbowOffset = 0;
             }
