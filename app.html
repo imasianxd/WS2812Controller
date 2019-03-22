@@ -261,7 +261,10 @@
     /*******************************
       common
     *******************************/
-      function AnimationRequest(lib, method, args) {
+      function AnimationRequest(lib, , ) {
+		console.log(lib);
+		console.log(method);
+		console.log(args);
         $Strip.POST("AnimationRequest", { lib: lib, method: method, args: args });
       }
 
