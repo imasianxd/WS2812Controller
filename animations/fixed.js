@@ -9,12 +9,11 @@ function fixed() {
     var RainbowOffset = 0;
     var refreshInterval = 1000;
 
-	
-	
+
     this.fixedLighting = function(args, strip){
 		strip.Mode = name + "fixed";
         console.log("Going fixed mode.");
-		refresh();
+		this.refresh(args,strip);
     };
 	
 	this.refresh = function(args,strip){
