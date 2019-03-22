@@ -209,6 +209,8 @@
 	var lastBrightness = "255";
 	
 	function StartSetFixed(ColorInput, BrightnessInput) {
+		Stop();
+		
 		var brightnessToSet="255";
 		var colorToSet="ffffff";
 		if (BrightnessInput == null) { brightnessToSet=lastBrightness; } else { brightnessToSet=BrightnessInput; }

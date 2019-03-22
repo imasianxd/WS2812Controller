@@ -7,18 +7,19 @@ function fixed() {
 		
     var name = "fixed.js";
     var RainbowOffset = 0;
-    var RainbowSpeed = 1000 / 30;
+    var refreshInterval = 1000;
 
     this.fixedLighting = function(args, strip){
         strip.Mode = name + "fixed";
         console.log("Going fixed mode.");
 
         var _this = this;
-        for (var i = 0; i < strip.NUM_LEDS; i++) {
-            strip.Lights[i] = parseInt("0x" + args.Color1); //.colorwheel((RainbowOffset + i) % 256);
-        }
 
-        RainbowOffset = (RainbowOffset + 1) % 256;
+		FixedColor1 = parseInt("0x" + args.Color1);
+		Brightness = parseInt(args.Brightness);
+
+		strip.SetStripColor(FixedColor1);
+		strip.SetBrightness(Brightness);
         
         strip.Render();
 
@@ -28,7 +29,7 @@ function fixed() {
             } else {
                 RainbowOffset = 0;
             }
-        }, RainbowSpeed);
+        }, refreshInterval);
     };
 
 }
