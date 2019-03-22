@@ -13,6 +13,7 @@
 
 	function fixed() {
 		this.fixedLighting = function(args, strip){
+			var _this = this;
 			console.log("Starting fixed Color");
 			
 			FixedColor1 = parseInt("0x" + args.Color1);
@@ -25,7 +26,9 @@
 			
 			strip.Render();
 			
-			setTimeout(function () { console.log("fixed"); strip.Render(); }, 1000);
+			setTimeout(function () { 
+				_this.fixedLighting(args, strip); 
+			}, 1000);
 
 		};
 
