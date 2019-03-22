@@ -26,7 +26,7 @@
 			strip.Render();
 		};
 		
-		this.fixedLightingPulse = function(args, strip) {
+		this.fixedLighting2 = function(args, strip) {
 		
 			console.log("turned on fixed lighting on pulse mode")
 			
@@ -38,9 +38,9 @@
 		    strip.SetStripColor(FixedColor1);
 			strip.SetBrightness(Brightness);
 			strip.Mode = name + "fixed";
-			
+			strip.Render();
 			//render the strip continuously
-			setTimeout(function () { strip.Render(); }, 1000);
+			//setTimeout(function () { strip.Render(); }, 1000);
     };
 
 	}
