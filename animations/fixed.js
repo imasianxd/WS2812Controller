@@ -12,7 +12,7 @@ function fixed() {
 
 
     this.fixedLighting = function(args, strip){
-		if (strip.Mode = name + "fixed"){
+		if (strip.Mode == name + "fixed"){
 			strip.Stop();
 			strip.Mode = null; 
 			setTimeout(function(){ console.log(" "); }, refreshInterval + 50)
