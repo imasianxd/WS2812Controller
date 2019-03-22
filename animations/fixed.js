@@ -26,8 +26,12 @@
 			Brightness = parseInt(args.Brightness);
 
 			var _this = this;
-			strip.SetStripColor(FixedColor1);
-			strip.SetBrightness(Brightness);
+			//strip.SetStripColor(FixedColor1);
+			//strip.SetBrightness(Brightness);
+
+			for (var i = 0; i < strip.NUM_LEDS; i++) {
+				strip.Lights[i] = FixedColor1;
+			}
 
 			strip.Render();
 
