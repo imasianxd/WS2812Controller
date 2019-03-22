@@ -20,7 +20,7 @@ function rainbow() {
             strip.Lights[i] = parseInt("0xffffff");//common.colorwheel((RainbowOffset + i) % 256);
         }
 
-        RainbowOffset = (RainbowOffset + 1) % 256;
+        //RainbowOffset = (RainbowOffset + 1) % 256;
         
         strip.Render();
 
