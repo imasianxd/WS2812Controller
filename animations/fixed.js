@@ -17,19 +17,17 @@
 			
 			FixedColor1 = parseInt("0x" + args.Color1);
 			Brightness = parseInt(args.Brightness);
+			var _this = this;
 			
-			// init the led
 		    strip.SetStripColor(FixedColor1);
 			strip.SetBrightness(Brightness);
 			strip.Mode = name + "fixed";
-			
-			setTimeout(function () { 
 
-				strip.Render(); 
+			strip.Render();
 
+			setTimeout(function () {
+				_this.fixedLighting(args, strip);
 			}, 1000);
-			
-			console.log("started fixed mode");
 		};
 	}
 
