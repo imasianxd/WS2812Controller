@@ -9,11 +9,16 @@ function fixed() {
     var RainbowOffset = 0;
     var refreshInterval = 1000;
 
+	
+	
     this.fixedLighting = function(args, strip){
-        strip.Mode = name + "fixed";
+		strip.Mode = name + "fixed";
         console.log("Going fixed mode.");
-
-        var _this = this;
+		refresh();
+    };
+	
+	this.refresh = function(args,strip){
+		var _this = this;
 
 		FixedColor1 = parseInt("0x" + args.Color1);
 		Brightness = parseInt(args.Brightness);
@@ -27,10 +32,10 @@ function fixed() {
             if (strip.Mode == name + "fixed") {
                 _this.fixedLighting(args, strip);
             } else {
-                RainbowOffset = 0;
+                strip.Stop();
             }
         }, refreshInterval);
-    };
+	}
 
 }
 
