@@ -1,60 +1,48 @@
 /*******************************
-	fixed color animations
+	fixed animations
 *******************************/
-	var common = require("./common.js");
-	var name = "fixed.js";
+    var common = require("./common.js");
 
-/*******************************
-	fixed methods
-*******************************/
+function fixed() {
+		
+    var name = "fixed.js";
+    var RainbowOffset = 0;
+    var RainbowSpeed = 1000 / 30;
 
-	var FixedColor1;
-	var Brightness;
-	var New = false;
-	var lastColor = "ffffff";
-	var lastBrightness = "255";
-	var conditionChanged = false;
+    this.fixedLighting = function(args, strip){
+        strip.Mode = name + "fixed";
+        console.log("Going fixed mode.");
 
-	function fixed() {
-		this.fixedLighting = function(args, strip){
-			console.log("Starting fixed Color");
-			strip.Mode = name + "fixed";
-			FixedColor1 = parseInt("0x" + args.Color1);
-			Brightness = parseInt(args.Brightness);
-			
-			if (FixedColor1 != lastColor){
-				//clearTimeout(loop);
-				conditionChanged = true;
-			} else if (Brightness != lastBrightness){
-				//clearTimeout(loop);
-				conditionChanged = true;
-			} else{
-				conditionChanged = false;
-			}
-			
-			var _this = this;
-			strip.SetStripColor(FixedColor1);
-			strip.SetBrightness(Brightness);
-			
-			lastColor = FixedColor1;
-			lastBrightness = Brightness;
+        var _this = this;
+        for (var i = 0; i < strip.NUM_LEDS; i++) {
+            strip.Lights[i] = parseInt("0x" + args.Color1); //.colorwheel((RainbowOffset + i) % 256);
+        }
 
-			strip.Render();
+        RainbowOffset = (RainbowOffset + 1) % 256;
+        
+        strip.Render();
 
-			loop = setTimeout(function () {
-				if (!conditionChanged) {
-					_this.fixedLighting(args, strip);
-				} else {
-					strip.Stop();
-					conditionChanged = false;
-				}
-			}, 100);
-
-		};
-	}
-
-module.exports = new fixed();
+        setTimeout(function () {
+            if (strip.Mode == name + "rainbow") {
+                _this.RainbowTick(args, strip);
+            } else {
+                RainbowOffset = 0;
+            }
+        }, RainbowSpeed);
+    };
 
 
+    this.RainbowSpeed = function(args, strip) {
+        var val = parseInt(args.speed);
+        var mappedVal = common.map_range(val, 0, 100, 50, 5);
+        if (typeof mappedVal === "number") {
+            RainbowSpeed = mappedVal;
+            console.log("New rainbow speed: " + RainbowSpeed);
+        } else {
+            RainbowSpeed = 1000 / 30;
+        }
+    };
 
-	
+}
+
+module.exports = new rainbow();
