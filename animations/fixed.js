@@ -8,10 +8,18 @@ function fixed() {
     var name = "fixed.js";
     var RainbowOffset = 0;
     var refreshInterval = 1000;
+	var loop;
 
 
     this.fixedLighting = function(args, strip){
+		if (strip.Mode = name + "fixed"){
+			strip.Stop();
+			strip.Mode = null; 
+			clearTimeout(loop);
+		}
+		
 		strip.Mode = name + "fixed";
+		
         console.log("Going fixed mode.");
 		this.refresh(args,strip);
     };
@@ -27,7 +35,7 @@ function fixed() {
         
         strip.Render();
 
-        setTimeout(function () {
+        loop = setTimeout(function () {
             if (strip.Mode == name + "fixed") {
                 _this.fixedLighting(args, strip);
             } else {
