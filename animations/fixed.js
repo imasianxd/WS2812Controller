@@ -25,7 +25,7 @@
 			
 			strip.Render();
 			
-			setTimeout(function () { strip.Render(); }, 1000);
+			setTimeout(function () { console.log("fixed"); strip.Render(); }, 1000);
 
 		};
 
